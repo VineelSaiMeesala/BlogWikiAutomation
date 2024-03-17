@@ -1,10 +1,10 @@
-package Brwoser;
+package BrowserDriver;
 
 import org.openqa.selenium.WebDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class BrwoserDriver {
+public class BrowserDriver {
    public WebDriver Driverload(String Browser) {
 
        WebDriver driver = null;

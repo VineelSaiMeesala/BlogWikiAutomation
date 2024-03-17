@@ -1,17 +1,18 @@
 package MainFile;
-import Brwoser.BrwoserDriver;
+import BrowserDriver.BrowserDriver;
 import Elements.UIElementsRepo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import resources.URLREPO;
 
 public class Testng {
-    static BrwoserDriver driver = new BrwoserDriver();
+    static BrowserDriver driver = new BrowserDriver();
     static UIElementsRepo repo = new UIElementsRepo();
-    static WebDriver mdriver = driver.Driverload("chrome");
+    static WebDriver mdriver = driver.Driverload("edge");
     static URLREPO LoadURL = new URLREPO();
 
     @BeforeTest
@@ -35,8 +36,9 @@ public class Testng {
             repo.AlertAccept(mdriver);
             repo.Login("Devtest@blogwiki.in","123456");
             repo.LoginClick("Login");
-            repo.Waiting(2000);
-            repo.print(repo.AlertText(mdriver));
+            repo.Waiting(3000);
+            String ActualText = repo.AlertText(mdriver);
+            Assert.assertEquals(ActualText,"Logged In");
         } else if (repo.AlertText(mdriver).equals("auth/invalid-credential")) {
             repo.Signup();
             repo.Waiting(3000);
