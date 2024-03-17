@@ -10,9 +10,10 @@ import org.testng.annotations.Test;
 import resources.URLREPO;
 
 public class Testng {
+     static String Browser = System.getProperty("Browser");
     static BrowserDriver driver = new BrowserDriver();
     static UIElementsRepo repo = new UIElementsRepo();
-    static WebDriver mdriver = driver.Driverload("edge");
+    static WebDriver mdriver = driver.Driverload(Browser);
     static URLREPO LoadURL = new URLREPO();
 
     @BeforeTest
