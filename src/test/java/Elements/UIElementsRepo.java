@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -24,97 +25,116 @@ public class UIElementsRepo {
     @FindBy(xpath = "//button[@class=\"loginBtn disabled\"]") WebElement DisabedLogin;
     @FindBy(xpath = "//button[@class=\"loginBtn\"]") WebElement Logout;
     @FindBy(xpath = "//a[@class=\"LoginSignuplink\"]") WebElement SignUpLink;
+    @FindBy(xpath = "//div[@class='MainWrapper']/h2[@class='loginHead']") WebElement Heading;
+    @FindBy(xpath = "//div[@class='ErrorMessagetest']/") WebElement AdminError;
+
+    public void AlertAccept(WebDriver driver){
+        driver.switchTo().alert().accept();
+    }
+
+    public void print(String Message){
+        System.out.print('\n'+Message);
+    }
     public void LoginButton(){
         try {
-            System.out.println('\n'+"Sleeping for Element...");
+            print('\n'+"Sleeping for Element...");
             WebElement LoginBtns = wait.until(ExpectedConditions.visibilityOf(LoginBtn));
             LoginBtns.click();
-            System.out.println('\n'+"Clicked LoginBtn");
+            print('\n'+"Clicked LoginBtn");
         } catch (StaleElementReferenceException e) {
-            System.out.println('\n'+"Sleeping for Element...");
+            print('\n'+"Sleeping for Element...");
             WebElement LoginBtns = wait.until(ExpectedConditions.visibilityOf(LoginBtn));
             LoginBtns.click();
-            System.out.println('\n'+"Clicked LoginBtn (Retry)");
+            print('\n'+"Clicked LoginBtn (Retry)");
         }
     }
     public void HomeClick(){
         try {
-            System.out.println('\n'+"Sleeping for Element...");
+            print('\n'+"Sleeping for Element...");
             WebElement HomeClicker = wait.until(ExpectedConditions.visibilityOf(HomeLink));
             HomeClicker.click();
-            System.out.println('\n'+"Clicked Home");
+            print('\n'+"Clicked Home");
         } catch (StaleElementReferenceException e) {
-            System.out.println('\n'+"Sleeping for Element...");
+            print('\n'+"Sleeping for Element...");
             WebElement HomeClicker = wait.until(ExpectedConditions.visibilityOf(HomeLink));
             HomeClicker.click();
-            System.out.println('\n'+"Clicked Home (Retry)");
+            print('\n'+"Clicked Home (Retry)");
         }
     }
     public void NewsClick(){
         try {
-            System.out.println('\n'+"Sleeping for Element...");
+            print('\n'+"Sleeping for Element...");
             WebElement NewsClicker = wait.until(ExpectedConditions.visibilityOf(NewsLink));
             NewsClicker.click();
-            System.out.println('\n'+"Clicked News");
+            print('\n'+"Clicked News");
         } catch (StaleElementReferenceException e) {
-            System.out.println('\n'+"Sleeping for Element...");
+            print('\n'+"Sleeping for Element...");
             WebElement NewsClicker = wait.until(ExpectedConditions.visibilityOf(NewsLink));
             NewsClicker.click();
-            System.out.println('\n'+"Clicked News (Retry)");
+            print('\n'+"Clicked News (Retry)");
         }
     }
     public void TechClick(){
         try {
-            System.out.println('\n'+"Sleeping for Element...");
+            print('\n'+"Sleeping for Element...");
             WebElement TechClicker = wait.until(ExpectedConditions.visibilityOf(TechLink));
             TechClicker.click();
-            System.out.println('\n'+"Clicked Tech");
+            print('\n'+"Clicked Tech");
         } catch (StaleElementReferenceException e) {
-            System.out.println('\n'+"Sleeping for Element...");
+            print('\n'+"Sleeping for Element...");
             WebElement TechClicker = wait.until(ExpectedConditions.visibilityOf(TechLink));
             TechClicker.click();
-            System.out.println('\n'+"Clicked Tech (Retry)");
+            print('\n'+"Clicked Tech (Retry)");
         }
     }
     public void Signup(){
         try {
-            System.out.println('\n'+"Sleeping for Element...");
+            print('\n'+"Sleeping for Element...");
             WebElement SignLinkClicker = wait.until(ExpectedConditions.visibilityOf(SignUpLink));
             SignLinkClicker.click();
-            System.out.println('\n'+"Clicked Login");
+            print('\n'+"Clicked Signup");
+            Assert.assertEquals(Heading.getText(),"SIGNUP");
+            print("PageLoaded: "+Heading.getText());
+
         } catch (StaleElementReferenceException e) {
-            System.out.println('\n'+"Sleeping for Element...");
+            print('\n'+"Sleeping for Element...");
             WebElement SignLinkClicker = wait.until(ExpectedConditions.visibilityOf(SignUpLink));
             SignLinkClicker.click();
-            System.out.println('\n'+"Clicked Login (Retry)");
+            print('\n'+"Clicked Signup (Retry)");
+            Assert.assertEquals(Heading.getText(),"SIGNUP");
+            print("PageLoaded: "+Heading.getText());
         }
     }
     public void LoginClick(String BtnType){
         switch(BtnType){
             case "Login":
                 try {
-                    System.out.println('\n'+"Sleeping for Element...");
+                    print('\n'+"Sleeping for Element...");
                     WebElement LoginClicker = wait.until(ExpectedConditions.visibilityOf(LoginClicked));
                     LoginClicker.click();
-                    System.out.println('\n'+"Clicked Login");
+                    print('\n'+"Clicked Login");
+                    Assert.assertEquals(Heading.getText(),"LOGIN");
+                    print("PageLoaded: "+Heading.getText());
                 } catch (StaleElementReferenceException e) {
-                    System.out.println('\n'+"Sleeping for Element...");
+                    print('\n'+"Sleeping for Element...");
                     WebElement LoginClicker = wait.until(ExpectedConditions.visibilityOf(LoginClicked));
                     LoginClicker.click();
-                    System.out.println('\n'+"Clicked Login (Retry)");
+                    print('\n'+"Clicked Login (Retry)");
+                    Assert.assertEquals(Heading.getText(),"LOGIN");
+                    print("PageLoaded: "+Heading.getText());
                 }
                 break;
             case "Logout":
                 try {
-                    System.out.println('\n'+"Sleeping for Element...");
+                    print('\n'+"Sleeping for Element...");
                     WebElement LogoutClicker = wait.until(ExpectedConditions.visibilityOf(Logout));
                     LogoutClicker.click();
-                    System.out.println('\n'+"Clicked Logout");
+                    print('\n'+"Clicked Logout");
                 } catch (StaleElementReferenceException e) {
-                    System.out.println('\n'+"Sleeping for Element...");
+                    print('\n'+"Sleeping for Element...");
                     WebElement LogoutClicker = wait.until(ExpectedConditions.visibilityOf(Logout));
                     LogoutClicker.click();
-                    System.out.println('\n'+"Clicked Logout (Retry)");
+                    print('\n'+"Clicked Logout (Retry)");
                 }
                 break;
         }
@@ -133,10 +153,5 @@ public class UIElementsRepo {
         Alert alert = drivers.switchTo().alert();
         return alert.getText();
     }
-    public void AlertAccept(WebDriver driver){
-        driver.switchTo().alert().accept();
-    }
-    public void print(String Message){
-        System.out.print('\n'+Message);
-    }
+
 }
