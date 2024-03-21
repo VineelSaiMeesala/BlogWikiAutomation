@@ -17,12 +17,13 @@ public class Testng {
     static BrowserDriver driver = new BrowserDriver();
     static UIElementsRepo repo = new UIElementsRepo();
     static WebDriver mdriver = driver.Driverload("chrome");
-    static URLREPO LoadURL = new URLREPO();
+//    static URLREPO LoadURL = new URLREPO();
+static String LoadURL = System.getProperty("URL");
 
     @BeforeTest
     public static void BrowserStart() throws InterruptedException {
         repo = PageFactory.initElements(mdriver, UIElementsRepo.class);
-        mdriver.get(LoadURL.getQAUrl());
+        mdriver.get(LoadURL);
         mdriver.manage().window().maximize();
         repo.Waiting(2000);
         System.out.print('\n'+mdriver.getTitle());
